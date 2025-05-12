@@ -4,7 +4,7 @@ A rapid prototype demonstrating how to overlay user-provided text on top of a Vi
 
 ## How does it work
 
-The core functionality can be broken down as follows, aligning with the sequence diagram below:
+The core functionality can be broken down as follows, aligning with the simplified sequence diagram below:
 
 ![image](https://github.com/user-attachments/assets/04b14cbb-562b-4d9c-8fea-3402d3bd9586)
 

@@ -1,0 +1,13 @@
+@startuml
+participant "JavaScript Logic" as JS
+participant "Overlay Element" as Overlay
+participant "Video Container" as VideoContainer
+
+JS -> JS: User enters text
+note right of JS: Text input field is updated.
+JS -> Overlay: Updates text content
+note right of Overlay: The content of the overlay element is changed.
+Overlay -> VideoContainer: Displayed on top
+note right of VideoContainer: Due to CSS positioning (e.g., absolute, z-index).
+
+@enduml

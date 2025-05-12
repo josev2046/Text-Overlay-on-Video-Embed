@@ -1,5 +1,7 @@
 A rapid prototype demonstrating how to overlay user-provided text on top of a Vimeo embedded video. It leverages standard HTML, CSS for styling and positioning, and JavaScript for dynamic text updates.
 
+[![DOI](https://zenodo.org/badge/981996757.svg)](https://doi.org/10.5281/zenodo.15387005)
+
 ## How does it work
 
 The core functionality can be broken down as follows, aligning with the sequence diagram below:
@@ -65,8 +67,9 @@ Extending this to have the text overlay interact with the Vimeo player (e.g., di
 Conceptually, this would involve:
 
 Initialising the Player: Using JavaScript to create an instance of the Vimeo player object, allowing programmatic control.
-Listening for Player Events: Attaching event listeners (e.g., for `play`, `pause`, `timeupdate`, `ended`) provided by the SDK.
-Conditional Logic: Implementing JavaScript logic within these event listeners to modify the `textContent` or the visibility (`display` style) of the `text-overlay` element based on the player's state or the current playback time.
-While the inclusion of the SDK script tag is present in the current code, the actual interaction logic would primarily reside within the JavaScript. It's more about utilising the API provided by the SDK through JavaScript rather than the SDK inherently handling the overlay display itself. The core mechanism of updating the `text-overlay` element based on conditions (whether those conditions are user input or player state) remains a JavaScript task, with CSS still responsible for the visual presentation and positioning of the overlay.
 
-Therefore, while the trigger for changes in the overlay can come from the Vimeo player's state via the SDK, the display and manipulation of the overlay element remain within the realm of JavaScript and CSS.
+Listening for Player Events: Attaching event listeners (e.g., for `play`, `pause`, `timeupdate`, `ended`) provided by the SDK.
+
+Conditional Logic: Implementing JavaScript logic within these event listeners to modify the `textContent` or the visibility (`display` style) of the `text-overlay` element based on the player's state or the current playback time.
+
+Now, while the inclusion of the SDK script tag is present in the current code, the actual interaction logic would primarily reside within the JavaScript. It's more about utilising the API provided by the SDK through JavaScript rather than the SDK inherently handling the overlay display itself. The core mechanism of updating the `text-overlay` element based on conditions (whether those conditions are user input or player state) remains a JavaScript task, with CSS still responsible for the visual presentation and positioning of the overlay. Therefore, while the trigger for changes in the overlay can come from the Vimeo player's state via the SDK, the display and manipulation of the overlay element remain within the realm of JavaScript and CSS.

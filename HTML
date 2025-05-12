@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-GB"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Overlay on Video Embed</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        #overlay-container {
+            position: relative;
+            width: 640px; /* Adjust this width as needed, guv'nor */
+            margin-bottom: 20px; /* Gives a bit of space below the input */
+        }
+        #text-overlay {
+            position: absolute;
+            top: 50%; /* Puts the top edge in the vertical middle */
+            left: 50%; /* Puts the left edge in the horizontal middle */
+            transform: translate(-50%, -50%); /* Centres the element properly, innit? */
+            color: white; /* Default colour for the text */
+            font-size: 24px; /* A decent size for the text */
+            font-weight: bold;
+            padding: 10px; /* Gives the text a bit of room around it */
+            background-color: rgba(0, 0, 0, 0.5); /* Makes the text a bit easier to read against the video */
+            z-index: 10; /* Ensures it sits on top of the Vimeo player */
+            pointer-events: none; /* Stops the overlay from blocking clicks on the player controls */
+            text-align: center; /* Centres the text within the overlay box */
+        }
+        #vimeo-embed {
+            width: 100%; /* Makes the embed take up the full width of its container */
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <label for="overlayText">Overlay Text:</label>
+        <input type="text" id="overlayText" placeholder="Enter text here">
+    </div>
+
+    <div id="overlay-container">
+        <div id="text-overlay"></div>
+        <div id="vimeo-embed" style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1070971107?h=14a6c566b7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="myVideo 5"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
+
+    <script>
+        const overlayTextElement = document.getElementById('text-overlay'); // Gets the element where the text will appear
+        const textInput = document.getElementById('overlayText'); // Gets the text input field
+        const overlayContainer = document.getElementById('overlay-container'); // The container for the overlay and embed
+        const vimeoEmbed = document.getElementById('vimeo-embed'); // The div containing the Vimeo embed
+
+        textInput.addEventListener('input', function() { // When the user types in the input...
+            overlayTextElement.textContent = textInput.value; // ...update the overlay text
+        });
+
+        // Makes sure the overlay container keeps the same shape as the Vimeo player
+        function resizeOverlay() {
+            overlayContainer.style.width = vimeoEmbed.offsetWidth + 'px';
+            overlayContainer.style.height = vimeoEmbed.offsetHeight + 'px';
+        }
+
+        // Calls the resize function when the page first loads and when the window is resized
+        resizeOverlay();
+        window.addEventListener('resize', resizeOverlay);
+    </script>
+
+</body>
+</html>
